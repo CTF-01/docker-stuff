@@ -1,0 +1,27 @@
+version: '2'
+  volumes:
+    db:
+  services:
+    db:
+      image: mariadb
+      command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+      restart: always
+      volumes:
+        - db:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=LongestMySQLP@55w0rdEva!
+        - MYSQL_PASSWORD=MyDiaryIsASecret1234
+        - MYSQL_DATABASE=DearDiary
+        - MYSQL_USER=DiaryUser
+  app:
+     image: phpmyadmin/phpmyadmin
+     container_name: phpmyadmin
+     environment:
+      - PMA_ARBITRARY=1
+     restart: always
+     links:
+      - db
+     ports:
+      - 8080:80
+     volumes:
+      - /sessions
