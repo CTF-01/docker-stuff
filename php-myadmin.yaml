@@ -10,9 +10,7 @@ version: '2'
         - db:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=LongestMySQLP@55w0rdEva!
-        - MYSQL_PASSWORD=MyDiaryIsASecret1234
         - MYSQL_DATABASE=DearDiary
-        - MYSQL_USER=DiaryUser
   app:
      image: phpmyadmin/phpmyadmin
      container_name: phpmyadmin
